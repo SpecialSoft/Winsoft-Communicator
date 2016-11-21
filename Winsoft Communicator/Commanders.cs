@@ -16,9 +16,23 @@ namespace Winsoft_Communicator
         {
             attributeCommands.Add(command);
         }
+        public static void AddCommand(AttributeCommand[] commands)
+        {
+            foreach (AttributeCommand command in commands)
+            {
+                attributeCommands.Add(command);
+            }
+        }
         public static void AddCommand(ClearCommand command)
         {
             clearCommands.Add(command);
+        }
+        public static void AddCommand(ClearCommand[] commands)
+        {
+            foreach (ClearCommand command in commands)
+            {
+                clearCommands.Add(command);
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ namespace Winsoft_Communicator.Commander
 {
     public class AttributeCommand
     {
-        private string command;
-        private string[] attributesNames;
+        public string command;
+        public string[] attributesNames;
 
         public AttributeCommand(string command, string[] attributesNames)
         {
@@ -17,18 +17,35 @@ namespace Winsoft_Communicator.Commander
             this.attributesNames = attributesNames;
         }
 
-        public void Call(string[] attributes)
+        public void Call(string[] commandWithAttributes)
+        {
+            string[] allCommandWithAttr = { };
+            int counter = 0;
+            foreach(string commandInAll in commandWithAttributes)
+            {
+                if(counter == 0)
+                {
+                    continue;
+                }
+                allCommandWithAttr[allCommandWithAttr.Length] = commandInAll;
+                counter++;
+            }
+            if (command.Equals(this.command, StringComparison.CurrentCultureIgnoreCase))
+                AfterCall(allCommandWithAttr);
+        }
+
+        public void AfterCall(string[] attributes)
         {
             if (attributes.Length == attributesNames.Length)
             {
-                RawCall(attributes);
+                OnCall(attributes);
             }
             else if (attributes.Length < attributesNames.Length ||
                      attributes.Length > attributesNames.Length)
                 throw new IndexOutOfRangeException("You must specify " + attributesNames.Length + " attributes");
         }
 
-        public virtual void RawCall(string[] attributes)
+        public virtual void OnCall(string[] attributes)
         {
             string attributesToShow = "";
             foreach(string attribute in attributes)
