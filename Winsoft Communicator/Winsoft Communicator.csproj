@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commanders.cs" />
     <Compile Include="Commander\AttributeCommand.cs" />
     <Compile Include="Commander\ClearCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
