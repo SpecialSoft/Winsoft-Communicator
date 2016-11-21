@@ -9,8 +9,8 @@ namespace Winsoft_Communicator
 {
     public class Commanders
     {
-        private static List<AttributeCommand> attributeCommands = new List<AttributeCommand>();
-        private static List<ClearCommand> clearCommands = new List<ClearCommand>();
+        public static List<AttributeCommand> attributeCommands = new List<AttributeCommand>();
+        public static List<ClearCommand> clearCommands = new List<ClearCommand>();
 
         public static void AddCommand(AttributeCommand command)
         {
