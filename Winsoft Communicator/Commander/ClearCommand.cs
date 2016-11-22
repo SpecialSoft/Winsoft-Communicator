@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Winsoft_Communicator
 {
-    public class ClearCommand
+    public abstract class ClearCommand
     {
         public string command;
 
@@ -21,9 +21,6 @@ namespace Winsoft_Communicator
                 OnCall();
         }
 
-        public virtual void OnCall()
-        {
-            Console.WriteLine("Called command " + command);
-        }
+        public abstract void OnCall();
     }
 }

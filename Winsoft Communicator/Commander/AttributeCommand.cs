@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Winsoft_Communicator.Commander
 {
-    public class AttributeCommand
+    public abstract class AttributeCommand
     {
         public string command;
         public string[] attributesNames;
@@ -42,20 +42,22 @@ namespace Winsoft_Communicator.Commander
             }
             else if (attributes.Length < attributesNames.Length ||
                      attributes.Length > attributesNames.Length)
-                throw new IndexOutOfRangeException("You must specify " + attributesNames.Length + " attributes");
+                throw new IndexOutOfRangeException("You must specify " + attributesNames.Length + " attributes in command " + command);
         }
 
-        public virtual void OnCall(string[] attributes)
+        public abstract void OnCall(string[] attributes);
+        
+        private void MustOnCaught(string[] attributes)
         {
             string attributesToShow = "";
-            foreach(string attribute in attributes)
+            foreach (string attribute in attributes)
             {
                 if (attributesToShow == "")
                     attributesToShow = attribute;
                 else
                     attributesToShow += ", " + attribute;
             }
-            Console.WriteLine("Called command " + command + ". With attributes ");
+            Console.WriteLine("Called command " + command + ". With attributes " + attributes);
         }
     }
 }
